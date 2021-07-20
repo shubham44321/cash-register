@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -13,10 +13,10 @@ const App = () => {
   const [giveBackAmount, setgiveBackAmount] = useState(
     Array(currencies.length).fill(0)
   );
+
   const calculate = () => {
-    setgiveBackAmount(Array(currencies.length).fill(0));
     console.log(giveBackAmount);
-    const arrayToUpdate = giveBackAmount;
+    const arrayToUpdate = Array(currencies.length).fill(0);
     if (billAmount === "") {
       toast("Please enter Bill amount", { type: "error" });
       return;
@@ -40,7 +40,6 @@ const App = () => {
     if (billAmount !== "" && cashGiven !== "") {
       const giveBack = parseInt(paid - bill);
       if (giveBack === 0) {
-        setgiveBackAmount(Array(currencies.length).fill(0));
         toast("Thank you for giving exact amount", {
           type: "success",
         });
@@ -58,7 +57,7 @@ const App = () => {
         }
       });
       console.log("going in state", arrayToUpdate);
-      setgiveBackAmount(arrayToUpdate);
+      setgiveBackAmount(() => arrayToUpdate);
       setTableVisiblity("");
     }
   };
