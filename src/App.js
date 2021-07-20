@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -9,7 +9,7 @@ const App = () => {
   const [btnVisiblity, setBtnVisiblity] = useState("hidden");
   const [tableVisiblity, setTableVisiblity] = useState("hidden");
   const [btnLabel, setBtnLabel] = useState("Next");
-  const [currencies, setCurrencies] = useState([2000, 500, 100, 20, 10, 5, 1]);
+  const [currencies] = useState([2000, 500, 100, 20, 10, 5, 1]);
   const [giveBackAmount, setgiveBackAmount] = useState(
     Array(currencies.length).fill(0)
   );
